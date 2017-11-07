@@ -1,0 +1,41 @@
+<br>
+<div>
+    <% if current_user == nil %>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="hero-icon"><span class="ion-ios-game-controller-a"></span>Collect-U</h1><br>
+                <h3>An easy new way to manage your wii u collection.</h3> 
+                <%= link_to "Sign Up!", new_user_registration_path, class:"btn btn-success btn-lg" %>
+                <%= link_to "Sign In", new_user_session_path, class:"btn btn-primary btn-lg"%>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 center card">
+                <h2>Free and easy</h2>
+                <p>Sign up for a free account and start tracking your collection right away!</p>
+            </div>
+            <div class="col-md-4 center card">
+                <h2>Never buy a duplicate again</h2>
+                <p>Avoid pesky duplicates by always being on top of your collection</p>
+            </div>
+            <div class="col-md-4 center card">
+                <h2>Your games at a glance</h2>
+                <p>Easily browse, delete and add games</p>
+            </div>
+        </div>
+    <% end %>
+    <% if current_user %>
+        <div class="container">
+            <h1>Your Library</h1>
+            <% Game.all.each do |game| %>
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-4"><h2><%= game.title %></h2></div>
+                        <div class="col-md-4"><h2><%= game.description %></h2></div>
+                        <div class="col-md-4"><h2>More Data here</h2></div><br>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+</div>
